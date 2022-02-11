@@ -64,6 +64,7 @@ In the same python console:
 # Prepare data for ERC20 token
 from ocean_lib.models.models_structures import CreateErc20Data
 from ocean_lib.web3_internal.constants import ZERO_ADDRESS
+DATA_nft_token = erc721_nft # from 2.1 Create an ERC721 data NFT
 DATA_erc20_data = CreateErc20Data(
     template_index=1,
     strings=["Datatoken 1", "DT1"],

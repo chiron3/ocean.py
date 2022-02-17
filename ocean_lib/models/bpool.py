@@ -264,8 +264,12 @@ class BPool(BTokenBase):
             "rebind", (token_address, balance, weight), from_wallet
         )
 
-    def get_spot_price(self, token_in: str, token_out: str) -> int:
-        return self.contract.caller.getSpotPrice(token_in, token_out)
+    def get_spot_price(
+        self, token_in: str, token_out: str, consume_market_swap_fee
+    ) -> int:
+        return self.contract.caller.getSpotPrice(
+            token_in, token_out, consume_market_swap_fee
+        )
 
     def get_amount_in_exact_out(
         self, token_in: str, token_out: str, token_amount_out: int, swap_market_fee: int
@@ -283,6 +287,9 @@ class BPool(BTokenBase):
 
     def get_max_out_ratio(self) -> int:
         return self.contract.caller.MAX_OUT_RATIO()
+
+    def get_max_in_ratio(self) -> int:
+        return self.contract.caller.MAX_IN_RATIO()
 
     def join_pool(
         self, pool_amount_out: int, max_amounts_in: List[int], from_wallet: Wallet
